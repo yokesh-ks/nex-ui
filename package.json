@@ -1,0 +1,103 @@
+{
+  "name": "@nex-ui/core",
+  "version": "0.1.0",
+  "description": "A modern, accessible React component library",
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "typescript",
+    "accessible"
+  ],
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./css": "./dist/esm/nex-ui.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun run build:esm && bun run build:cjs && bun run build:types",
+    "build:esm": "webpack --config webpack.config.esm.mjs",
+    "build:cjs": "webpack --config webpack.config.cjs.mjs",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
+    "clean": "rm -rf dist",
+    "prebuild": "bun run clean",
+    "dev": "storybook dev -p 6006",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,json,md}\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "storybook:build": "storybook build -o storybook-static",
+    "prepublishOnly": "bun run build",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "9",
+    "@storybook/addon-a11y": "8",
+    "@storybook/addon-essentials": "8",
+    "@storybook/addon-interactions": "8",
+    "@storybook/addon-links": "8",
+    "@storybook/addon-webpack5-compiler-swc": "^4.0.2",
+    "@storybook/blocks": "8",
+    "@storybook/manager-api": "8",
+    "@storybook/react": "8",
+    "@storybook/react-webpack5": "8",
+    "@storybook/theming": "8",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "css-loader": "^7.1.3",
+    "eslint": "9",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "mini-css-extract-plugin": "^2.10.0",
+    "prettier": "^3.8.1",
+    "storybook": "8",
+    "ts-jest": "^29.4.6",
+    "ts-loader": "^9.5.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0",
+    "webpack": "^5.105.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-merge": "^6.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
